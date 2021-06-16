@@ -17,7 +17,9 @@ In a `new terminal`, write the following commands:
     
     docker-compose exec web bash
 
-    python3 management/commands/seed.py
+    python3 services/seed.py
+##Adding permission groups for the application to work properly
+To do this, you need to create a `group` through the `admin panel` with the name of the `PermissionGroup` and specify this group on the user page in order to access the API
 
 ## Get token to authenticate user
 

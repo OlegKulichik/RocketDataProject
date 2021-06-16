@@ -10,5 +10,5 @@ def accrual_wages():
 
 @shared_task()
 def remove_total_amount_wages(queryset):
-    queryset.update(total_amount_wages=0)
+    Employee.objects.filter(id__in=queryset).update(total_amount_wages=0)
 

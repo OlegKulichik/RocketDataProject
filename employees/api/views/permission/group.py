@@ -4,12 +4,7 @@ from django.contrib.auth.models import Group
 
 class GroupEmployeePermissions(BasePermission):
 
-    def has_permission(self, request, view):
-        names = []
-        groups = Group.objects.filter(user=request.user.id).values_list('name')
+    ALLOWED_GROUP = 'PermissionGroup'
 
-        for groups_name in groups:
-            names.append(*groups_name)
-        if 'NameGroup' in names:
-            return True
-        return False
+    def has_permission(self, request, view):
+        return True if self.ALLOWED_GROUP in list(request.user.groups.all().values_list('name', flat=True)) else False

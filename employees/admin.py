@@ -9,7 +9,7 @@ from RocketDataProject.tasks import remove_total_amount_wages
 @admin.action(description='Mark employee to reset the total amount wages')
 def nullify_total_amount_wages(modeladmin, request, queryset):
     if len(queryset) >= 20:
-        remove_total_amount_wages(queryset)
+        remove_total_amount_wages.delay(list(queryset.all().values_list('id', flat=True)))
     else:
         queryset.update(total_amount_wages=0)
 
