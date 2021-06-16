@@ -23,7 +23,7 @@ install = "*"
 sentry-sdk = "*"
 djangorestframework-simplejwt = "4.6.0"
 django-seed="*"
-
+redis = "*"
 
 
 [dev-packages]
