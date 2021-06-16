@@ -1,5 +1,5 @@
-from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib import admin
 
 from employees.models import Employee, User
 
@@ -17,7 +17,9 @@ class EmployeeAdmin(admin.ModelAdmin):
 
     @staticmethod
     def head_link(obj):
-        return format_html('<a href="/admin/employees/employee/{}"> {} </a>', obj.head.id, obj.head)
+        if obj.head:
+            return format_html('<a href="/admin/employees/employee/{}"> {} </a>', obj.head.id, obj.head)
+        return format_html('<a href="/admin/employees/employee/{}"> Head not appointed </a>', obj.id)
 
 
 admin.site.register(Employee, EmployeeAdmin)

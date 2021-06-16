@@ -2,5 +2,8 @@ from core.enums.base_enum import BaseEnum
 
 
 class PositionStatus(BaseEnum):
-    BILLABLE = 'Billable'
-    NO_BILLABLE = 'Not Billable'
+    POS1 = 'Positions 1'
+    POS2 = 'Positions 2'
+    POS3 = 'Positions 3'
+    POS4 = 'Positions 4'
+    POS5 = 'Positions 5'
