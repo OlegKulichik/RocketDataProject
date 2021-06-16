@@ -13,7 +13,7 @@ class User(AbstractUser):
 
 
 class Employee(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='employee')
     position = models.CharField(max_length=12, choices=PositionStatus.items(), default=PositionStatus.POS5.value)
     employee_start_date = models.DateTimeField(auto_now_add=True)
     amount_wages = models.PositiveIntegerField(default=500)

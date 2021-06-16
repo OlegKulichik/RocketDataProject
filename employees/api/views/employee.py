@@ -16,4 +16,9 @@ class EmployeeView(
     serializer_class = EmployeeSerializer
     permission_classes = (GroupEmployeePermissions,)
 
-
+    def get_queryset(self):
+        try:
+            employee = Employee.objects.filter(user=self.request.user)
+            return employee
+        except Employee.DoesNotExist:
+            raise FileNotFoundError('Employee not found')
