@@ -3,10 +3,15 @@ from django.contrib import admin
 
 from employees.models import Employee, User
 
+from RocketDataProject.tasks import remove_total_amount_wages
+
 
 @admin.action(description='Mark employee to reset the total amount wages')
 def nullify_total_amount_wages(modeladmin, request, queryset):
-    queryset.update(total_amount_wages=None)
+    if len(queryset) >= 20:
+        remove_total_amount_wages(queryset)
+    else:
+        queryset.update(total_amount_wages=0)
 
 
 class EmployeeAdmin(admin.ModelAdmin):

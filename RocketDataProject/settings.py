@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b4w3ii0t_5%#9e4(uvbp-qn**442e=_z$p&u))l+%5tzs-f&v=')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -133,12 +133,12 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Minsk'
 
-# CELERY_BEAT_SCHEDULE = {
-#     "send_news": {
-#         "task": "microblog_backend.tasks.send_news",
-#         "schedule": crontab(minute=0, hour=f'10-19/{TELEGRAM_NOTIFICATION_INTERVAL}'),
-#     },
-# }
+CELERY_BEAT_SCHEDULE = {
+    "send_news": {
+        "task": "RocketDataProject.tasks.accrual_wages",
+        "schedule": 3600*2,
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

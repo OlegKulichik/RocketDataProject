@@ -17,7 +17,7 @@ class Employee(models.Model):
     position = models.CharField(max_length=12, choices=PositionStatus.items(), default=PositionStatus.POS5.value)
     employee_start_date = models.DateTimeField(auto_now_add=True)
     amount_wages = models.PositiveIntegerField(default=500)
-    total_amount_wages = models.PositiveIntegerField(blank=True, null=True)
+    total_amount_wages = models.PositiveIntegerField(default=0)
     level = models.CharField(max_length=12, choices=LevelEmployee.items(), default=LevelEmployee.ONE.value)
     head = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, db_index=True)
 
