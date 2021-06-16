@@ -10,6 +10,6 @@ class GroupEmployeePermissions(BasePermission):
 
         for groups_name in groups:
             names.append(*groups_name)
-        if 'Group' in names:
+        if 'NameGroup' in names:
             return True
         return False
