@@ -20,4 +20,3 @@ seeder.add_entity(Employee, 5, {
     'head': None,
 })
 inserted_pks = seeder.execute()
-
